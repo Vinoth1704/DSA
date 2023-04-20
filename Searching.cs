@@ -8,7 +8,7 @@ namespace DSA
         public static void searching()
         {
 
-            int[] SortedArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 };
+            int[] SortedArray = Array.GetLargeSortedArray();
 
         sorting:
             Console.WriteLine("\nSEACRHING:");
@@ -33,19 +33,38 @@ namespace DSA
             if (Continue == 'Y' || Continue == 'y') goto sorting;
         }
 
+        //Linear Search
+        public static void LinearSearch(int[] array)
+        {
+            bool flag = false;
+            int i = 0;
+            // PrintArray.Array(array);
+            Console.WriteLine("\nEnter a value to be find in the array ");
+            int target = Convert.ToInt32(Console.ReadLine());
+            _stopWatch.Start();
+            for (i = 0; target != array[i] && i < array.Length; i++)
+            {
+                flag = true;
+            }
+            if (flag) Console.WriteLine($"The target is present in {i} position");
+            else Console.WriteLine("Target not found");
+            _stopWatch.Stop();
+            Console.WriteLine($"Total time elapsed {_stopWatch.Elapsed}");
+        }
+
         //Binary Search 
         //Only possible in sorted array.
         public static void BinarySearch(int[] array)
         {
             int low = 0, high = array.Length - 1, mid = 0, flag = 0;
-            Array.PrintArray(array);
-            Console.WriteLine("Enter a value to be find in the array ");
+            // PrintArray.Array(array);
+            Console.WriteLine("\nEnter a value to be find in the array ");
             int target = Convert.ToInt32(Console.ReadLine());
             _stopWatch.Start();
             while (high >= low)
             {
                 mid = (low + high) / 2;
-                Console.WriteLine($"low:{array[low]}, high:{array[high]}, mid:{array[mid]}");
+                // Console.WriteLine($"low:{array[low]}, high:{array[high]}, mid:{array[mid]}");
                 if (target == array[mid])
                 {
                     flag = 1;
@@ -57,25 +76,6 @@ namespace DSA
                     low = mid + 1;
             }
             if (flag == 1) Console.WriteLine($"The target is present in {mid} position");
-            else Console.WriteLine("Target not found");
-            _stopWatch.Stop();
-            Console.WriteLine($"Total time elapsed {_stopWatch.Elapsed}");
-        }
-
-        //Linear Search
-        public static void LinearSearch(int[] array)
-        {
-            bool flag = false;
-            int i = 0;
-            Array.PrintArray(array);
-            Console.WriteLine("Enter a value to be find in the array ");
-            int target = Convert.ToInt32(Console.ReadLine());
-            _stopWatch.Start();
-            for (i = 0; target != array[i] && i < array.Length; i++)
-            {
-                flag = true;
-            }
-            if (flag) Console.WriteLine($"The target is present in {i} position");
             else Console.WriteLine("Target not found");
             _stopWatch.Stop();
             Console.WriteLine($"Total time elapsed {_stopWatch.Elapsed}");

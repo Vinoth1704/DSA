@@ -1,8 +1,8 @@
 namespace DSA
 {
-    public class Array
+    public class PrintArray
     {
-        public static void PrintArray(int[] Array)
+        public static void Array(int[] Array)
         {
             for (int i = 0; i < Array.Length; i++)
             {

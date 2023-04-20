@@ -4,9 +4,9 @@ namespace DSA
 {
     public class Sorting
     {
+        private static Stopwatch _stopwatch = new Stopwatch();
         public static void sorting()
         {
-            Stopwatch stopwatch = new Stopwatch();
 
             int[] unSortedArray = { 2, 5, 7, 6, 3, 9, 8, 4, 1 };
 
@@ -20,10 +20,7 @@ namespace DSA
             {
                 case 1:
                     {
-                        stopwatch.Start();
                         BubbleSort(unSortedArray);
-                        stopwatch.Stop();
-                        Console.WriteLine($"\n\nTime Elasped {stopwatch.Elapsed}");
                         break;
                     }
                 case 2:
@@ -47,7 +44,8 @@ namespace DSA
         public static void BubbleSort(int[] array)
         {
             Console.Write("\nBefore sorting : ");
-            Array.PrintArray(array);
+            PrintArray.Array(array);
+            _stopwatch.Start();
             int temp = 0, size = array.Length - 1, loop = 0;
             for (int i = 0; i < size; i++)
             {
@@ -61,7 +59,7 @@ namespace DSA
                         loop++;
                     }
                     Console.Write($"\nArray with outer loop : {i} and inner loop : {j} = ");
-                    Array.PrintArray(array);
+                    PrintArray.Array(array);
                 }
                 if (loop != 0)
                 {
@@ -72,8 +70,10 @@ namespace DSA
                     break;
                 }
             }
+            _stopwatch.Stop();
             Console.Write("\n\nAfter sorting : ");
-            Array.PrintArray(array);
+            PrintArray.Array(array);
+            Console.WriteLine($"\n\nTime Elasped {_stopwatch.Elapsed}");
         }
 
 
@@ -81,7 +81,8 @@ namespace DSA
         public static void SeletionSort(int[] array)
         {
             Console.Write("Before sorting : ");
-            Array.PrintArray(array);
+            PrintArray.Array(array);
+            _stopwatch.Start();
             int temp = 0, size = array.Length, smallest = 0;
             for (int i = 0; i < size; i++)
             {
@@ -97,10 +98,12 @@ namespace DSA
                 array[i] = array[smallest];
                 array[smallest] = temp;
                 Console.Write($"\nArray with outer loop : {i} = ");
-                Array.PrintArray(array);
+                PrintArray.Array(array);
             }
-            Console.Write("\nAfter sorting : ");
-            Array.PrintArray(array);
+            _stopwatch.Stop();
+            Console.Write("\n\nAfter sorting : ");
+            PrintArray.Array(array);
+            Console.WriteLine($"\n\nTime Elasped {_stopwatch.Elapsed}");
         }
 
 
@@ -108,7 +111,8 @@ namespace DSA
         public static void InsertionSort(int[] array)
         {
             Console.Write("Before sorting : ");
-            Array.PrintArray(array);
+            PrintArray.Array(array);
+            _stopwatch.Start();
             int smallestValue = 0;
             for (int i = 1; i <= array.Length - 1; i++)
             {
@@ -121,8 +125,12 @@ namespace DSA
                 }
                 array[j + 1] = smallestValue;
                 Console.Write($"\nArray with outer loop : {i} = ");
-                Array.PrintArray(array);
+                PrintArray.Array(array);
             }
+            _stopwatch.Stop();
+            Console.Write("\n\nAfter sorting : ");
+            PrintArray.Array(array);
+            Console.WriteLine($"\n\nTime Elasped {_stopwatch.Elapsed}");
         }
     }
 }
